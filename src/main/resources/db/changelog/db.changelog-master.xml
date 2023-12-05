@@ -4,7 +4,14 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <changeSet id="init" author="yousssef">
+    <changeSet id="init" author="youssef">
+        <createTable tableName="Todo">
+            <column name="id" type="BIGSERIAL" autoIncrement="true" >
+                <constraints primaryKey="true" primaryKeyName="pk_todo" />
+            </column>
+            <column name="text" type="varchar"/>
+            <column name="checked" type="boolean"/>
+        </createTable>
 
     </changeSet>
 </databaseChangeLog>

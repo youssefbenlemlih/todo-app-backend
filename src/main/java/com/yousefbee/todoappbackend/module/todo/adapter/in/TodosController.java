@@ -35,7 +35,7 @@ public class TodosController {
     TodosUseCase.CreateTodoResult result = todosUseCase.createTodo(request.getText());
     if (result instanceof TodosUseCase.CreateTodoResult.Success success) {
       var body = CreateTodoResponse.builder().createdTodo(mapper.toResponse(success.createdTodo())).build();
-      return ResponseEntity.ok(body);
+      return ResponseEntity.status(HttpStatus.CREATED).body(body);
     } else if (result instanceof TodosUseCase.CreateTodoResult.InvalidText) {
       return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     } else {
